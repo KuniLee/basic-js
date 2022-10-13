@@ -1,4 +1,5 @@
 const { NotImplementedError } = require('../extensions/index.js');
+const common = require("mocha/lib/interfaces/common");
 
 /**
  * Given some integer, find the maximal number you can obtain
@@ -11,9 +12,15 @@ const { NotImplementedError } = require('../extensions/index.js');
  * For n = 152, the output should be 52
  *
  */
-function deleteDigit(/* n */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function deleteDigit( n ) {
+const numbers = []
+  const digits = n.toString().split("")
+  for (let i = 0; i < digits.length; i++) {
+    const arr = [...digits]
+    arr.splice(i,1)
+    numbers.push(+arr.join(""))
+  }
+  return Math.max(...numbers)
 }
 
 module.exports = {
